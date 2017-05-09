@@ -62,7 +62,6 @@ class Card():
 # logging all cards to a file deck.log - original way
 # d = Deck()
 # print d.cards[0]
-# file = open("deck.csv", "a")
 # for card in d:
 # 	with open("deck.log", "a") as file:
 # 		file.write("{}\n".format(card))
@@ -74,17 +73,17 @@ os.remove("deck.csv")
 
 with open("deck.csv", "a") as csvfile:
 	data_writer = csv.writer(csvfile, delimiter=",")
-	data_writer.writerow(["Value","Suit"])
 	for card in d:
 		data_writer.writerow([card.value, card.suit])
 
 # load deck from a csv
 with open("deck.csv") as csvfile:
-	reader = csv.DictReader(csvfile)
+	reader = csv.reader(csvfile)
 	rows = list(reader)
 	d.cards = []
 	for row in rows:
-		# print(row["A"], row["Hearts"])
-		d.cards.append(Card(row["Suit"],row["Value"]))
+		d.cards.append(Card(row[1],row[0]))
+
+
 
 print(d.cards)
