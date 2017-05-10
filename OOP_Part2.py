@@ -3,15 +3,18 @@ from functools import wraps
 import csv
 import os
 
+
 # Bonus
 def log(f):
 	@wraps(f)
-	def wrapper(*args):
-		print("{}{}".format(f,args))
-		return f(*args)
+	def wrapper(*args, **keywords):
+		# os.remove("deck.log")
+		with open("deck.log", "a") as file:
+			file.write("{}{}\n".format(f.__name__,args))
+		return f(*args, **keywords)
 	return wrapper
 
-@log
+
 class Deck():
 	def __init__(self):
 		suits = ["Hearts","Clubs","Diamonds","Spades"]
@@ -31,19 +34,37 @@ class Deck():
 		self.card.index -= self.card.index
 		return self.cards[self.card.index]
 
-
-	def deal():
+	@log
+	def deal(self):
 		if len(self.cards) == 0:
 			raise ValueError("No cards left in deck")
-		return self.cards.pop()
+		card = self.cards.pop()
+		return card # returns the card dealt (last card in array)
 
-	def shuffle():
+	@log
+	def shuffle(self):
 		if len(self.cards) < 52:
 			raise ValueError("Not a full deck. Can't be shuffled.")
 		shuffle(self.cards)
 		return self
 
-@log
+	@log
+	def save(self):
+		os.remove("deck.csv")
+		with open("deck.csv", "a") as csvfile:
+			data_writer = csv.writer(csvfile, delimiter=",")
+			for card in self.cards:
+				data_writer.writerow([card.value, card.suit])
+
+	@log
+	def load_from_csv(self):
+		with open("deck.csv") as csvfile:
+			reader = csv.reader(csvfile)
+			rows = list(reader) # makes an array of arrays
+			self.cards = []
+			for row in rows:
+				self.cards.append(Card(row[1],row[0]))
+
 class Card():
 	def __init__(self,suit,value):
 		self.suit = suit
@@ -52,38 +73,24 @@ class Card():
 	def __repr__(self):
 		return "{} of {}".format(self.value, self.suit)
 
-# BONUSES:
 
-# log the function and arguments called - see def log above
-# print(Deck())
+# testing
 
-
-# iterate through deck, printing the first card and
-# logging all cards to a file deck.log - original way
 # d = Deck()
-# print d.cards[0]
+# print(d.cards)
+# print("---creating deck---")
 # for card in d:
-# 	with open("deck.log", "a") as file:
-# 		file.write("{}\n".format(card))
-
-
-# iterate through deck, logging it to a csv in order
-d = Deck()
-os.remove("deck.csv")
-
-with open("deck.csv", "a") as csvfile:
-	data_writer = csv.writer(csvfile, delimiter=",")
-	for card in d:
-		data_writer.writerow([card.value, card.suit])
-
-# load deck from a csv
-with open("deck.csv") as csvfile:
-	reader = csv.reader(csvfile)
-	rows = list(reader)
-	d.cards = []
-	for row in rows:
-		d.cards.append(Card(row[1],row[0]))
-
-
-
-print(d.cards)
+# 	print(card)
+# print("---shuffling---")
+# d.shuffle()
+# for card in d:
+# 	print(card) # new order
+# print("---dealing---")
+# dealt = d.deal()
+# print(dealt)
+# print('---saving---')
+# d.save()
+# print('---loading---')
+# d.load_from_csv()
+# for card in d:
+# 	print(card)
