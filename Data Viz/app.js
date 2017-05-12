@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "San Rafael": "purple"
     }
 
-    var station = "Redwood City"; // default 
+    var station = "San Francisco Arkansas St"; // default 
 
     var national_standard = 35; // ug/m3 (National Ambient Air Quality Standard for PM2.5 daily avg)
 
@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function() {
                            .domain([0,yMax])
                            .range([height,0]); // flipping y axis
             var xScale = d3.scaleTime()
-                           .domain([new Date(2016, 0, 1), new Date(2016, 12, 31)])
-                           .range([0,2000]);
+                           .domain([new Date(2016, 0, 1), new Date(2016, 11, 31)]) // 0 January, 11 December
+                           .range([0,width]); // not working right
 
             d3.select('svg')
                 .attr('width', width)
