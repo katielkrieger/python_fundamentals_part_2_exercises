@@ -3,36 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Bay Area Air Quality</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="row">
-  		<div class="col-xs-12 text-center">
-  			<svg>
-  			</svg>
-  		</div>
-  </div>
-  
+	<svg>
+	</svg>
+
   <div class="row">
   	<div class="col-xs-2 col-xs-offset-5">
-  		<input type="range" min="2013" max="2017" step="1" value="2013">
+  		<input type="range" min="2013" max="2016" step="1" value="2013" class="0">
+  		<div class="year">Year: 2013</div>
+  		<div class="note">Slide to see other years</div>
   	</div>
   </div>
   <div class="row">
   	<div class="col-xs-2 col-xs-offset-5 text-center">
-  		<div class="dropdown">
-	  	<button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Choose a location
-		  <span class="caret"></span></button>
-		  <ul class="dropdown-menu">
-		    <li><a href="#">San Francisco Arkansas Street</a></li>
-		    <li><a href="#">Oakland West</a></li>
-		    <li><a href="#">San Rafael</a></li>
-		    <li><a href="#">Redwood City</a></li>
-		  </ul>
-		</div>
+  		<select name="" id="x-axis" class="selectpicker btn btn-primary btn-lg sanFrancisco">
+	      <option value="sanFrancisco">San Francisco </option>
+	      <option value="oakland">Oakland </option>
+	      <option value="redwoodCity">Redwood City </option>
+	      <option value="sanRafael">San Rafael </option>
+	    </select>
   	</div>
   </div>
   
