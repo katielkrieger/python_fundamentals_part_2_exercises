@@ -23,17 +23,11 @@ text {
 	font-size: 30px;
 }
 
-.note {
-	font-size: 30px;
-	padding-bottom: 100px;
-}
-
 .btn {
 	font-size: 30px;
 }
 
 .toggle {
-	margin-bottom: 40px;
 	border-radius: 10px;
 }
 
@@ -49,10 +43,7 @@ text {
 	text-align: center;
 }
 
-.year {
-	font-size: 50px;
-}
-
-rect.data:hover {
-	fill: #051519;
+circle:hover {
+	stroke: black;
+	stroke-width: 7px;
 }

@@ -13,36 +13,19 @@
 	<header>
 		<h1><strong>Air Quality in the San Francisco Bay Area</strong>
 		</h1>
-		<h1>Concentration of Fine Particulate Matter (&#181;g/m<sup>3</sup>)
+		<h1>Average Days per Month Above the Federal Standard for Fine Particulate Matter 
 		</h1>
 		<h2>As measured by the <a href="http://www.baaqmd.gov/about-air-quality/current-air-quality/air-monitoring-data">Bay Area Air Quality Management District</a>
 		</h2>
 		<div class="row">
 		  	<div class="col-xs-2 col-xs-offset-5 text-center">
-		  		<div>
-		  			<a class="btn btn-info toggle" href="/summary/index.html" role="button">Summary view</a>
-		  		</div>
-		  		<select name="" id="x-axis" class="selectpicker btn btn-primary btn-lg sanFrancisco">
-			      <option value="sanFrancisco">San Francisco </option>
-			      <option value="oakland">Oakland </option>
-			      <option value="redwoodCity">Redwood City </option>
-			      <option value="sanRafael">San Rafael </option>
-			    </select>
+		  		<a class="btn btn-warning toggle" href="/../index.html" role="button">Detailed view</a>
 		  	</div>
 		  </div>
 	<svg>
 	</svg>
-
-  <div class="row">
-  	<div class="col-xs-2 col-xs-offset-5">
-  		<input type="range" min="2010" max="2016" step="1" value="2010" class="0">
-  		<div class="year">Year: 2010</div>
-  		<div class="note">Slide to see other years</div>
-  	</div>
-  </div>
-  
-  
+    
   <script src="https://d3js.org/d3.v4.js"></script>
-  <script src="app.js"></script>
+  <script src="/summary/summary.js"></script>
 </body>
 </html>
